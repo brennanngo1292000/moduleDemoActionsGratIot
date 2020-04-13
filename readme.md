@@ -258,7 +258,16 @@ export default () => {
 ### ValueButton
 
 1.  Thuộc tính
-
+  - command: String,
+  - action: String,
+  - value_type: String,
+  - onPress: Function,
+  - onPressIn: Function,
+  - onPressOut: Function,
+  - isShowDetail: Boolean,
+  - style: Object,
+  - values: Array /** [{name:value1, controll:value2, listen:value3, value:value4}]*/,
+  - valueDefault: String,
 2.  Ví dụ
 
 ```javascript
@@ -302,8 +311,9 @@ export default () => {
     </>
   );
 };
-
 ```
+<img src='./Images/' width=350 height=600/>
+<img src='./Images/' width=350 height=600/>
 
 3. Hướng đẫn thêm mới một kiểu value
    Hiện tại thành phần hỗ trợ hai kiểu value là default và input
@@ -316,43 +326,8 @@ export default () => {
    Nếu bạn muốn thêm một kiểu value là checkbox
 
 ```javascript
-import React, {useState} from 'react';
-import Button from '../Button';
-import {ColorPicker} from 'react-native-color-picker';
-
-export const Prop = {
-  command: String,
-  action: String,
-  value_type: String,
-  onPress: Function,
-  onPressIn: Function,
-  onPressOut: Function,
-  isShowDetail: Boolean,
-  style: Object,
-  values: Array /** [{name:value1, controll:value2, listen:value3, value:value4}]*/,
-  valueDefault: String,
-};
-
-export default (props = Prop) => {
-
-  const {
-    command,
-    value_type,
-    values,
-    onPressIn,
-    onPressOut,
-    onPress,
-    style,
-    valueDefault,
-  } = props;
-
-  const [newValue, setValue] = useState(valueDefault);
-  const onSetValue = value => {
-    setValue(value);
-    if (onPress) onPress(value);
-  };
-
-  if (value_type) {
+    ...
+    ...
     const typeCheck = value_type.toLowerCase();
     switch (typeCheck) {
       case 'default':
