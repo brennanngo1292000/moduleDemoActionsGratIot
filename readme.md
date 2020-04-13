@@ -254,7 +254,7 @@ export default () => {
   );
 };
 ```
-<img src='./Images/' width=350 height=600/>
+<img src='./Images/Screenshot_1586770426.png' width=350 height=600/>
 
 ### ValueButton
 
