@@ -11,23 +11,41 @@ export const Prop = {
   style: Object,
 };
 
-export default props => {
-  const {
-    listActions,
-    actions,
-    onPressIn,
-    onPressOut,
-    onPress,
-    isShowDetail,
-    style,
-  } = props;
+export const PropActionButtonItem = {
+  onPress: Function,
+  isShowDetail: Boolean,
+  style: Object,
+  actionInfo: Object /*{command:value, name:value1, action:value2, controll:value3, listen:value4, value_type:value5, values:Array}*/,
+};
 
-  const [listActionDetail, setListActionDetail] = useState(null);
-
-  const onPressButton = value => {
-    if (onPress) onPress(value);
+export const ActionButtonItem = (props = PropActionButtonItem) => {
+  const {style, onPress, actionInfo} = props;
+  const {name, value} = actionInfo;
+  const [newValue, setNewValue] = useState(value);
+  const onPressButton = () => {
+    if (onPress) onPress({...actionInfo, setNewValue});
   };
 
+  return (
+    <Button
+      style={{...style}}
+      onPress={onPressButton}
+      name={name}
+      iconRightStyle={{
+        size: 20,
+        color: 'black',
+        type: 'FontAwesome',
+        name: 'angle-right',
+      }}
+      value={newValue}
+    />
+  );
+};
+
+export default (props = Prop) => {
+  const {listActions, actions, onPress, isShowDetail, style} = props;
+
+  const [listActionDetail, setListActionDetail] = useState(null);
   const findActionDetail = (listActions, actions) => {
     return listActions.filter(item => {
       for (let i = 0; i < actions.length; i++) {
@@ -47,8 +65,8 @@ export default props => {
             await setListActionDetail([
               {
                 name: 'Hành động',
-                command: 'Hành động',
-                action: 'Hành động',
+                command: 'action',
+                action: 'action',
                 //add property or edit property
               },
             ]);
@@ -66,19 +84,11 @@ export default props => {
       {listActionDetail ? (
         listActionDetail.map((item, index) => {
           return (
-            <Button
+            <ActionButtonItem
               style={{...style}}
-              onPress={() => onPressButton(item)}
-              onPressIn={onPressIn}
-              onPressOut={onPressOut}
+              onPress={onPress}
               key={index}
-              name={item.name}
-              iconRightStyle={{
-                size: 20,
-                color: 'black',
-                type: 'FontAwesome',
-                name: 'angle-right',
-              }}
+              actionInfo={item}
             />
           );
         })

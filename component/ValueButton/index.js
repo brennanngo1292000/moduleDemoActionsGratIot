@@ -83,7 +83,7 @@ export default (props = Prop) => {
 
             return (
               <ColorPicker
-                onColorSelected={value => alert(value)}
+                onColorSelected={value => onPress(value)}
                 style={{flex: 1, width: '100%', height: 500, padding: 10}}
               />
             );
