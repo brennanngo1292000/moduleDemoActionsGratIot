@@ -254,7 +254,7 @@ export default () => {
   );
 };
 ```
-<img src='./Images/Screenshot_1586770426.png' width=350 height=600/>
+<img src='./Images/Screenshot_1586770403.png' width=350 height=650/>
 
 ### ValueButton
 
@@ -313,7 +313,7 @@ export default () => {
   );
 };
 ```
-<img src='./Images/Screenshot_1586770403.png' width=350 height=600/>
+<img src='./Images/Screenshot_1586770426.png' width=350 height=650/>
 
 3. Hướng đẫn thêm mới một kiểu value
    Hiện tại thành phần hỗ trợ hai kiểu value là default và input
