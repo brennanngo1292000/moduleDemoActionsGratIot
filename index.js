@@ -20,9 +20,9 @@ export const ActionButton = ActionButtonComponent;
 export default function App() {
   return (
     <Stack.Navigator headerMode={null}>
-      <Stack.Screen name="ScreenTest" component={ScreenTest} />
-      <Stack.Screen name="ListAction" component={ListAction} />
       <Stack.Screen name="History" component={History} />
+      {/* <Stack.Screen name="ScreenTest" component={ScreenTest} /> */}
+      <Stack.Screen name="ListAction" component={ListAction} />
       <Stack.Screen name="DetailAction" component={DetailAction} />
     </Stack.Navigator>
   );
